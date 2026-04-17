@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inheritance of the Lord Pentecostal Church</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #7c1c1c; --red-dark: #5a1212; --red-light: #b22222;
+    --gold: #FFD700; --gold-dark: #c9a800;
+    --white: #fff; --bg: #fdf6f0; --text: #1a1a1a; --muted: #666; --border: #e0d5cc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); }
+  h1,h2,h3 { font-family: 'Playfair Display', serif; }
+  .page { display: none; } .page.active { display: block; }
+
+  /* NAV */
+  nav { background: var(--red); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+  .logo { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; max-width: 280px; line-height: 1.3; }
+  .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+  .nav-links a { color: #fff; text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-btn { background: var(--gold); color: var(--red-dark); border: none; padding: 0.5rem 1.2rem; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 14px; }
+  .nav-btn.outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--red-dark), var(--red), var(--red-light)); color: white; text-align: center; padding: 6rem 2rem; position: relative; overflow: hidden; }
+  .hero::before { content: "✝"; position: absolute; font-size: 400px; opacity: 0.04; top: -80px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+  .hero h1 { font-size: 2.8rem; color: var(--gold); margin-bottom: 1rem; line-height: 1.2; }
+  .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; opacity: 0.9; }
+  .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 0.8rem 2rem; border-radius: 30px; font-size: 15px; font-weight: 700; cursor: pointer; border: none; transition: all 0.2s; display: inline-block; font-family: 'Lato', sans-serif; }
+  .btn-gold { background: var(--gold); color: var(--red-dark); }
+  .btn-gold:hover { background: var(--gold-dark); }
+  .btn-outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+  .btn-red { background: var(--red); color: white; }
+  .btn-red:hover { background: var(--red-dark); }
+
+  /* SECTIONS */
+  .section { padding: 4rem 2rem; }
+  .section-title { text-align: center; font-size: 2rem; color: var(--red); margin-bottom: 0.3rem; }
+  .divider { width: 60px; height: 4px; background: var(--gold); margin: 0.5rem auto 1rem; border-radius: 2px; }
+  .section-sub { text-align: center; color: var(--muted); margin-bottom: 2.5rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
+  .card .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+  .card h3 { color: var(--red); margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+  .services-bg { background: white; }
+  .service-item { display: flex; align-items: center; gap: 1rem; background: var(--bg); border-radius: 10px; padding: 1rem 1.5rem; border-left: 4px solid var(--gold); margin-bottom: 1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .day-badge { background: var(--red); color: var(--gold); border-radius: 8px; padding: 0.4rem 0.8rem; font-size: 13px; font-weight: 700; white-space: nowrap; min-width: 90px; text-align: center; }
+  .service-info h4 { font-size: 1rem; color: var(--text); }
+  .service-info p { font-size: 0.85rem; color: var(--muted); }
+  .verse-section { background: var(--red); color: white; text-align: center; padding: 4rem 2rem; }
+  .verse-section blockquote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; max-width: 700px; margin: 0 auto 1rem; color: var(--gold); line-height: 1.7; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+  .contact-card { background: white; border-radius: 10px; padding: 1.5rem; text-align: center; border: 1px solid var(--border); }
+  .contact-card .icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+  .contact-card h4 { font-size: 0.8rem; color: #888; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .contact-card p { font-size: 0.95rem; font-weight: 700; }
+  footer { background: #111; color: #aaa; text-align: center; padding: 2rem; font-size: 0.85rem; }
+  footer span { color: var(--gold); }
+  .notif-bar { background: var(--gold); color: var(--red-dark); padding: 0.6rem 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+
+  /* LOGIN */
+  .login-page { min-height: 100vh; background: linear-gradient(135deg, var(--red-dark), var(--red-light)); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .login-box { background: white; border-radius: 16px; padding: 3rem 2.5rem; max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+  .login-box h2 { font-size: 1.8rem; color: var(--red); margin-bottom: 0.3rem; }
+  .login-box p { color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem; }
+  .cross-icon { font-size: 2.5rem; text-align: center; display: block; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 15px; font-family: 'Lato', sans-serif; transition: border-color 0.2s; background: white; color: var(--text); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--red); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .login-error { background: #fdecea; color: #c62828; padding: 0.7rem 1rem; border-radius: 8px; font-size: 14px; margin-bottom: 1rem; display: none; }
+  .switch-link { text-align: center; margin-top: 1.5rem; font-size: 14px; color: var(--muted); }
+  .switch-link a { color: var(--red); cursor: pointer; font-weight: 700; text-decoration: none; }
+
+  /* DASHBOARD */
+  .dashboard { min-height: 100vh; background: #f5f0eb; }
+  .dash-header { background: var(--red); color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .dash-header h2 { font-size: 1.3rem; color: var(--gold); }
+  .dash-header p { font-size: 13px; opacity: 0.8; }
+  .user-info { display: flex; align-items: center; gap: 1rem; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--red-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+  .dash-content { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+  .dash-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .tab-btn { padding: 0.6rem 1.2rem; border: 2px solid var(--border); border-radius: 20px; background: white; cursor: pointer; font-size: 14px; font-family: 'Lato', sans-serif; color: var(--muted); transition: all 0.2s; }
+  .tab-btn.active, .tab-btn:hover { background: var(--red); color: white; border-color: var(--red); }
+  .tab-content { display: none; } .tab-content.active { display: block; }
+  .stat-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); }
+  .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+  .stat-card .value { font-size: 2rem; font-weight: 700; color: var(--red); font-family: 'Playfair Display', serif; }
+  .stat-card .sub { font-size: 12px; color: var(--muted); margin-top: 0.3rem; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; }
+  th { background: var(--red); color: white; padding: 0.8rem 1rem; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-size: 14px; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fdf6f0; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+  .badge-green { background: #e8f5e9; color: #2e7d32; }
+  .badge-red { background: #fdecea; color: #c62828; }
+  .badge-gold { background: #fff8e1; color: #b8860b; }
+  .badge-blue { background: #e3f2fd; color: #1565c0; }
+  .panel { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+  .panel-title { font-size: 1.1rem; color: var(--red); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; font-family: 'Playfair Display', serif; }
+  .notif-item { display: flex; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+  .notif-item:last-child { border-bottom: none; }
+  .notif-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); margin-top: 5px; flex-shrink: 0; }
+  .notif-text { font-size: 14px; }
+  .notif-time { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  .msg { padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: 14px; }
+  .msg-error { background: #fdecea; color: #c62828; }
+  .msg-success { background: #e8f5e9; color: #2e7d32; }
+  .admin-tag { background: var(--gold); color: var(--red-dark); font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 0.5rem; }
+  .del-btn { background: none; border: 1px solid #fcc; border-radius: 6px; padding: 3px 8px; cursor: pointer; font-size: 12px; color: #c62828; }
+  .del-btn:hover { background: #fdecea; }
+  .overflow-x { overflow-x: auto; }
+  .member-profile { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; }
+  .profile-avatar { width: 70px; height: 70px; border-radius: 50%; background: var(--red); color: var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2rem; flex-shrink: 0; }
+  .profile-info h3 { font-size: 1.3rem; color: var(--red); }
+  .profile-info p { color: var(--muted); font-size: 14px; }
+  .profile-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .giving-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .giving-card { background: var(--red); color: white; border-radius: 10px; padding: 1.2rem; text-align: center; }
+  .giving-card .g-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .giving-card .g-value { font-size: 1.6rem; font-weight: 700; color: var(--gold); font-family: 'Playfair Display', serif; }
+
+  /* LOADING */
+  .loading-overlay { position: fixed; inset: 0; background: rgba(124,28,28,0.95); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; color: white; }
+  .loading-overlay h2 { color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem; }
+  .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,215,0,0.3); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loading">
+  <div style="font-size:3rem;margin-bottom:1rem">✝</div>
+  <h2>Inheritance of the Lord</h2>
+  <div class="spinner"></div>
+  <p style="opacity:0.8;font-size:14px">Connecting to database...</p>
+</div>
+
+<!-- PUBLIC SITE -->
+<div id="public-site" class="page">
+  <div class="notif-bar" id="public-notifs-bar">
+    <span>📢 Sunday Evening Meeting: 6PM</span>
+    <span>📢 Tuesday Service: 8AM – 12PM</span>
+    <span>📢 Friday Night Prayer: 9PM – 4AM</span>
+  </div>
+  <nav>
+    <div class="logo">✝ Inheritance of the Lord Pentecostal Church</div>
+    <div class="nav-links">
+      <a onclick="scrollTo(0,0)">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <button class="nav-btn" onclick="showPage('login-page')">Member Login</button>
+    </div>
+  </nav>
+  <section class="hero">
+    <h1>Inheritance of the Lord<br>Pentecostal Church</h1>
+    <p>Welcome to a place of worship, healing, and the power of the Holy Spirit. You belong here.</p>
+    <div class="btn-group">
+      <button class="btn btn-gold" onclick="showPage('login-page')">Join Our Family</button>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+  </section>
+  <section class="section" id="about">
+    <h2 class="section-title">Welcome Home</h2><div class="divider"></div>
+    <p class="section-sub">We are a Spirit-filled community built on faith, love, and the Word of God.</p>
+    <div class="cards">
+      <div class="card"><span class="icon">🙏</span><h3>Prayer</h3><p>We believe in the power of prayer. Join us for weekly prayer sessions and watch God move.</p></div>
+      <div class="card"><span class="icon">📖</span><h3>The Word</h3><p>Every sermon is rooted in scripture — practical, powerful, and life-changing messages.</p></div>
+      <div class="card"><span class="icon">🔥</span><h3>The Spirit</h3><p>We move in the gifts of the Holy Spirit. Expect miracles, healing, and transformation.</p></div>
+      <div class="card"><span class="icon">❤️</span><h3>Community</h3><p>A family that loves one another. Find fellowship, support, and belonging here.</p></div>
+    </div>
+  </section>
+  <section class="section services-bg" id="services">
+    <h2 class="section-title">Service Times</h2><div class="divider"></div>
+    <p class="section-sub">Come as you are. All are welcome.</p>
+    <div class="service-item"><div class="day-badge">Sunday</div><div class="service-info"><h4>Evening Worship Meeting</h4><p>Evening Service · Main Sanctuary</p></div></div>
+    <div class="service-item"><div class="day-badge">Tuesday</div><div class="service-info"><h4>Morning Service</h4><p>8:00 AM – 12:00 PM (Noon) · Main Sanctuary</p></div></div>
+    <div class="service-item"><div class="day-badge">Wednesday</div><div class="service-info"><h4>Afternoon Bible Study</h4><p>12:00 PM – 4:00 PM · Fellowship Hall</p></div></div>
+    <div class="service-item"><div class="day-badge">Friday</div><div class="service-info"><h4>All Night Prayer & Worship</h4><p>9:00 PM – 4:00 AM (Next Morning) · Main Sanctuary</p></div></div>
+    <div class="service-item"><div class="day-badge">Youth</div><div class="service-info"><h4>Youth Session & Motivation</h4><p>Youth Centre · See schedule for times</p></div></div>
+  </section>
+  <section class="verse-section">
+    <blockquote>"The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor."</blockquote>
+    <cite>— Luke 4:18</cite>
+  </section>
+  <section class="section" id="contact">
+    <h2 class="section-title">Find Us</h2><div class="divider"></div>
+    <p class="section-sub">We'd love to see you in person.</p>
+    <div class="contact-grid">
+      <div class="contact-card"><span class="icon">📍</span><h4>Address</h4><p>QWW5+885, Chiro Rd<br>Githurai, Nairobi</p></div>
+      <div class="contact-card"><span class="icon">📞</span><h4>Phone</h4><p>0115193731</p></div>
+      <div class="contact-card"><span class="icon">✉️</span><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f8fff9f4e3f8e5f0fff2f4fef7e5f9f4fdfee3f5d1f6fcf0f8fdbff2fefc">[email&#160;protected]</a></p></div>
+      <div class="contact-card"><span class="icon">🕐</span><h4>Office Hours</h4><p>Mon–Fri: 9AM – 5PM</p></div>
+    </div>
+  </section>
+  <footer><p>&copy; 2026 <span>Inheritance of the Lord Pentecostal Church</span>. All rights reserved. 🙏</p></footer>
+</div>
+
+<!-- LOGIN PAGE -->
+<div id="login-page" class="page">
+  <div class="login-page">
+    <div class="login-box">
+      <span class="cross-icon">✝</span>
+      <h2>Member Login</h2>
+      <p>Sign in to access your membership dashboard.</p>
+      <div class="login-error" id="login-error">Invalid email or password.</div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="login-email" placeholder="your@email.com" /></div>
+      <div class="form-group"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••" /></div>
+      <button class="btn btn-red" style="width:100%;margin-top:0.5rem" onclick="doLogin()">Sign In</button>
+      <div style="text-align:center;margin-top:1rem;font-size:13px;color:var(--muted)" id="login-loading" style="display:none">Signing in...</div>
+      <div class="switch-link"><a onclick="showPage('public-site')">← Back to Website</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="member-dash" class="page">
+  <div class="dashboard">
+    <div class="dash-header">
+      <div><h2 id="dash-greeting">Welcome back!</h2><p id="dash-date"></p></div>
+      <div class="user-info">
+        <div style="cursor:pointer;position:relative" onclick="switchTab('tab-notifs')">
+          <span style="font-size:1.5rem">🔔</span>
+          <span id="notif-badge" style="position:absolute;top:-4px;right:-4px;background:var(--gold);color:var(--red-dark);border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">0</span>
+        </div>
+        <div class="avatar" id="dash-avatar">?</div>
+        <div><div style="font-weight:700;font-size:14px" id="dash-name">Member</div><div style="font-size:12px;opacity:0.7" id="dash-role">Member</div></div>
+        <button class="nav-btn outline" onclick="doLogout()">Logout</button>
+      </div>
+    </div>
+    <div class="dash-content">
+      <div class="dash-tabs" id="dash-tabs">
+        <button class="tab-btn active" onclick="switchTab('tab-overview')">Overview</button>
+        <button class="tab-btn" onclick="switchTab('tab-attendance')">My Attendance</button>
+        <button class="tab-btn" onclick="switchTab('tab-tithes')">My Tithes</button>
+        <button class="tab-btn" onclick="switchTab('tab-notifs')">Notifications</button>
+      </div>
+
+      <!-- OVERVIEW -->
+      <div id="tab-overview" class="tab-content active">
+        <div class="member-profile">
+          <div class="profile-avatar" id="profile-avatar-big">?</div>
+          <div class="profile-info">
+            <h3 id="profile-name">—</h3>
+            <p id="profile-email">—</p>
+            <p id="profile-joined">—</p>
+            <div class="profile-badges"><span class="badge badge-green">Active</span><span class="badge badge-gold" id="profile-dept">—</span></div>
+          </div>
+        </div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="label">Services Attended</div><div class="value" id="ov-attended">—</div><div class="sub">This year</div></div>
+          <div class="stat-card"><div class="label">Attendance Rate</div><div class="value" id="ov-rate">—</div><div class="sub">Based on records</div></div>
+          <div class="stat-card"><div class="label">Total Tithes</div><div class="value" id="ov-tithes">—</div><div class="sub">This year</div></div>
+          <div class="stat-card"><div class="label">Last Giving</div><div class="value" id="ov-last-giving" style="font-size:1rem;padding-top:0.5rem">—</div><div class="sub">Most recent</div></div>
+        </div>
+        <div class="panel"><div class="panel-title">Recent Notifications</div><div id="overview-notifs"></div></div>
+      </div>
+
+      <!-- ATTENDANCE -->
+      <div id="tab-attendance" class="tab-content">
+        <div class="panel"><div class="panel-title">My Attendance Record</div>
+          <div class="overflow-x"><table><thead><tr><th>Date</th><th>Service</th><th>Status</th><th>Notes</th></tr></thead><tbody id="attendance-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- TITHES -->
+      <div id="tab-tithes" class="tab-content">
+        <div class="giving-summary">
+          <div class="giving-card"><div class="g-label">This Month</div><div class="g-value" id="g-month">—</div></div>
+          <div class="giving-card"><div class="g-label">This Year</div><div class="g-value" id="g-year">—</div></div>
+          <div class="giving-card"><div class="g-label">Total Given</div><div class="g-value" id="g-total">—</div></div>
+          <div class="giving-card"><div class="g-label">Last Given</div><div class="g-value" id="g-last" style="font-size:1rem">—</div></div>
+        </div>
+        <div class="panel"><div class="panel-title">Tithe & Offering History</div>
+          <div class="overflow-x"><table><thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Method</th><th>Notes</th></tr></thead><tbody id="tithes-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div id="tab-notifs" class="tab-content">
+        <div class="panel"><div class="panel-title">Church Notifications</div><div id="notifs-list"></div></div>
+      </div>
+
+      <!-- ADMIN: MEMBERS -->
+      <div id="tab-admin-members" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">All Members <button class="btn btn-red" style="font-size:13px;padding:0.4rem 1rem" onclick="toggleForm('add-member-form')">+ Add Member</button></div>
+          <div id="add-member-form" style="display:none;background:var(--bg);padding:1.5rem;border-radius:10px;margin-bottom:1.5rem">
+            <div class="msg msg-success" id="member-add-success" style="display:none">Member added!</div>
+            <div class="msg msg-error" id="member-add-error" style="display:none"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name</label><input id="new-name" placeholder="Jane Doe" /></div>
+              <div class="form-group"><label>Email</label><input id="new-email" type="email" placeholder="jane@email.com" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Password</label><input id="new-pass" type="password" placeholder="Min 6 characters" /></div>
+              <div class="form-group"><label>Phone</label><input id="new-phone" placeholder="+254 700 000 000" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Department</label>
+                <select id="new-dept"><option>General</option><option>Worship Team</option><option>Ushering</option><option>Youth</option><option>Children Ministry</option><option>Prayer Team</option><option>Media</option><option>Finance</option></select>
+              </div>
+              <div class="form-group"><label>Role</label>
+                <select id="new-role"><option value="member">Member</option><option value="admin">Admin</option></select>
+              </div>
+            </div>
+            <div class="form-group"><label>Join Date</label><input id="new-joined" type="date" /></div>
+            <div style="display:flex;gap:0.5rem">
+              <button class="btn btn-red" onclick="addMember()">Save Member</button>
+              <button class="btn" style="background:var(--border);color:var(--text)" onclick="toggleForm('add-member-form')">Cancel</button>
+            </div>
+          </div>
+          <div class="overflow-x"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Department</th><th>Joined</th><th>Action</th></tr></thead><tbody id="members-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ADMIN: ATTENDANCE -->
+      <div id="tab-admin-attendance" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">Record Attendance</div>
+          <div class="msg msg-success" id="att-success" style="display:none">Attendance recorded!</div>
+          <div class="form-row">
+            <div class="form-group"><label>Member</label><select id="att-member"><option value="">Select...</option></select></div>
+            <div class="form-group"><label>Date</label><input type="date" id="att-date" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Service</label>
+              <select id="att-service">
+                <option>Sunday Evening Meeting</option>
+                <option>Tuesday Morning Service</option>
+                <option>Wednesday Bible Study</option>
+                <option>Friday All Night Prayer</option>
+                <option>Youth Session Motivation</option>
+                <option>Special Event</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Status</label><select id="att-status"><option>Present</option><option>Absent</option><option>Excused</option></select></div>
+          </div>
+          <div class="form-group"><label>Notes</label><input id="att-notes" placeholder="Optional..." /></div>
+          <button class="btn btn-red" onclick="recordAttendance()">Record Attendance</button>
+        </div>
+        <div class="panel"><div class="panel-title">All Attendance Records</div>
+          <div class="overflow-x"><table><thead><tr><th>Member</th><th>Date</th><th>Service</th><th>Status</th><th>Notes</th><th>Action</th></tr></thead><tbody id="all-attendance-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ADMIN: TITHES -->
+      <div id="tab-admin-tithes" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">Record Tithe / Offering</div>
+          <div class="msg msg-success" id="tithe-success" style="display:none">Tithe recorded!</div>
+          <div class="form-row">
+            <div class="form-group"><label>Member</label><select id="tithe-member"><option value="">Select...</option></select></div>
+            <div class="form-group"><label>Date</label><input type="date" id="tithe-date" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Type</label><select id="tithe-type"><option>Tithe</option><option>Offering</option><option>Special Offering</option><option>Building Fund</option><option>Mission</option></select></div>
+            <div class="form-group"><label>Amount (KES)</label><input type="number" id="tithe-amount" placeholder="0" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Payment Method</label><select id="tithe-method"><option>Cash</option><option>M-Pesa</option><option>Bank Transfer</option><option>Cheque</option></select></div>
+            <div class="form-group"><label>Notes</label><input id="tithe-notes" placeholder="Optional..." /></div>
+          </div>
+          <button class="btn btn-red" onclick="recordTithe()">Save Record</button>
+        </div>
+        <div class="panel">
+          <div class="panel-title">All Tithe Records</div>
+          <div class="giving-summary" style="margin-top:0">
+            <div class="giving-card"><div class="g-label">This Month</div><div class="g-value" id="admin-g-month">—</div></div>
+            <div class="giving-card"><div class="g-label">This Year</div><div class="g-value" id="admin-g-year">—</div></div>
+            <div class="giving-card"><div class="g-label">All Time</div><div class="g-value" id="admin-g-all">—</div></div>
+          </div>
+          <div class="overflow-x" style="margin-top:1rem"><table><thead><tr><th>Member</th><th>Date</th><th>Type</th><th>Amount</th><th>Method</th><th>Notes</th><th>Action</th></tr></thead><tbody id="all-tithes-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ADMIN: NOTIFICATIONS -->
+      <div id="tab-admin-notifs" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">Send Notification</div>
+          <div class="msg msg-success" id="notif-success" style="display:none">Notification sent!</div>
+          <div class="form-group"><label>Title</label><input id="notif-title" placeholder="e.g. Special Prayer Service" /></div>
+          <div class="form-group"><label>Message</label><textarea id="notif-msg" placeholder="Write your announcement..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label>Category</label><select id="notif-cat"><option>Announcement</option><option>Event</option><option>Prayer Request</option><option>Reminder</option><option>Urgent</option></select></div>
+            <div class="form-group"><label>Date</label><input type="date" id="notif-date" /></div>
+          </div>
+          <button class="btn btn-red" onclick="sendNotification()">Send to All Members</button>
+        </div>
+        <div class="panel"><div class="panel-title">All Notifications</div><div id="admin-notifs-list"></div></div>
+      </div>
+
+      <!-- ADMIN: PROGRAMS / SERVICE SCHEDULE -->
+      <div id="tab-admin-programs" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">Add Service / Program <button class="btn btn-red" style="font-size:13px;padding:0.4rem 1rem" onclick="toggleForm('add-program-form')">+ Add Program</button></div>
+          <div id="add-program-form" style="display:none;background:var(--bg);padding:1.5rem;border-radius:10px;margin-bottom:1.5rem">
+            <div class="msg msg-success" id="prog-success" style="display:none">Program saved!</div>
+            <div class="form-row">
+              <div class="form-group"><label>Program Name</label><input id="prog-name" placeholder="e.g. Sunday Evening Meeting" /></div>
+              <div class="form-group"><label>Date</label><input type="date" id="prog-date" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Time</label><input id="prog-time" placeholder="e.g. 6:00 PM – 9:00 PM" /></div>
+              <div class="form-group"><label>Venue</label><input id="prog-venue" placeholder="e.g. Main Sanctuary" /></div>
+            </div>
+            <div class="form-group"><label>Description / Notes</label><textarea id="prog-desc" placeholder="What is this program about?"></textarea></div>
+            <div style="display:flex;gap:0.5rem">
+              <button class="btn btn-red" onclick="saveProgram()">Save Program</button>
+              <button class="btn" style="background:var(--border);color:var(--text)" onclick="toggleForm('add-program-form')">Cancel</button>
+            </div>
+          </div>
+          <div class="overflow-x"><table><thead><tr><th>Program</th><th>Date</th><th>Time</th><th>Venue</th><th>Notes</th><th>Action</th></tr></thead><tbody id="programs-body"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ADMIN: YOUTH -->
+      <div id="tab-admin-youth" class="tab-content">
+        <div class="panel">
+          <div class="panel-title">Youth Contribution Tracker</div>
+          <div class="giving-summary" style="margin-top:0">
+            <div class="giving-card"><div class="g-label">Youth This Month</div><div class="g-value" id="youth-month">—</div></div>
+            <div class="giving-card"><div class="g-label">Youth This Year</div><div class="g-value" id="youth-year">—</div></div>
+            <div class="giving-card"><div class="g-label">Youth All Time</div><div class="g-value" id="youth-all">—</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Youth Attendance Progress</div>
+          <div class="overflow-x"><table><thead><tr><th>Youth Member</th><th>Services Attended</th><th>Attendance Rate</th><th>Total Contribution</th><th>Last Seen</th></tr></thead><tbody id="youth-progress-body"></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Record Youth Attendance</div>
+          <div class="msg msg-success" id="youth-att-success" style="display:none">Attendance recorded!</div>
+          <div class="form-row">
+            <div class="form-group"><label>Youth Member</label><select id="youth-att-member"><option value="">Select youth member...</option></select></div>
+            <div class="form-group"><label>Date</label><input type="date" id="youth-att-date" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Service</label>
+              <select id="youth-att-service">
+                <option>Youth Session Motivation</option>
+                <option>Sunday Evening Meeting</option>
+                <option>Tuesday Morning Service</option>
+                <option>Friday All Night Prayer</option>
+                <option>Special Youth Event</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Status</label><select id="youth-att-status"><option>Present</option><option>Absent</option><option>Excused</option></select></div>
+          </div>
+          <div class="form-group"><label>Notes</label><input id="youth-att-notes" placeholder="Optional..." /></div>
+          <button class="btn btn-red" onclick="recordYouthAttendance()">Record Attendance</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDKs -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, deleteDoc, query, where, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAA9vK-dIxMFdoJAiVhXjOseJ0oICX9OI4",
+  authDomain: "inheritance-church.firebaseapp.com",
+  projectId: "inheritance-church",
+  storageBucket: "inheritance-church.firebasestorage.app",
+  messagingSenderId: "661536293654",
+  appId: "1:661536293654:web:a6bec273745f881e794637"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+let currentProfile = null;
+
+// ===== HELPERS =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+window.showPage = showPage;
+
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => { if(b.getAttribute('onclick') && b.getAttribute('onclick').includes(id)) b.classList.add('active'); });
+}
+window.switchTab = switchTab;
+
+function toggleForm(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+window.toggleForm = toggleForm;
+
+function showMsg(id, msg, type='success') {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'msg msg-' + type;
+  if (msg) el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 3500);
+}
+
+function fmt(n) { return 'KES ' + Number(n).toLocaleString(); }
+
+// ===== AUTH =====
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    errEl.style.display = 'block';
+    errEl.textContent = 'Invalid email or password. Please try again.';
+  }
+}
+window.doLogin = doLogin;
+
+async function doLogout() {
+  await signOut(auth);
+  currentUser = null; currentProfile = null;
+  showPage('public-site');
+}
+window.doLogout = doLogout;
+
+onAuthStateChanged(auth, async (user) => {
+  document.getElementById('loading').style.display = 'none';
+  if (user) {
+    currentUser = user;
+    const snap = await getDoc(doc(db, 'members', user.uid));
+    if (snap.exists()) {
+      currentProfile = snap.data();
+      await loadDashboard();
+      showPage('member-dash');
+    } else {
+      await signOut(auth);
+      showPage('public-site');
+    }
+  } else {
+    showPage('public-site');
+  }
+});
+
+// ===== DASHBOARD =====
+async function loadDashboard() {
+  const u = currentProfile;
+  const initials = u.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase();
+  document.getElementById('dash-greeting').textContent = 'Welcome back, ' + u.name.split(' ')[0] + '!';
+  document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-KE',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('dash-avatar').textContent = initials;
+  document.getElementById('dash-name').textContent = u.name;
+  document.getElementById('dash-role').textContent = u.role === 'admin' ? 'Administrator' : 'Member';
+  document.getElementById('profile-avatar-big').textContent = initials;
+  document.getElementById('profile-name').textContent = u.name;
+  document.getElementById('profile-email').textContent = u.email;
+  document.getElementById('profile-joined').textContent = 'Member since: ' + (u.joined || '—');
+  document.getElementById('profile-dept').textContent = u.dept || 'General';
+
+  // Admin tabs
+  const tabs = document.getElementById('dash-tabs');
+  tabs.querySelectorAll('.admin-tab').forEach(t => t.remove());
+  if (u.role === 'admin') {
+    const adminTabs = [['tab-admin-members','👥 Members'],['tab-admin-attendance','📋 Attendance'],['tab-admin-tithes','💰 Tithes'],['tab-admin-notifs','📢 Notifications'],['tab-admin-programs','📅 Programs'],['tab-admin-youth','🔥 Youth']];
+    adminTabs.forEach(([id, label]) => {
+      const btn = document.createElement('button');
+      btn.className = 'tab-btn admin-tab';
+      btn.innerHTML = label + '<span class="admin-tag">Admin</span>';
+      btn.setAttribute('onclick', `switchTab('${id}')`);
+      tabs.appendChild(btn);
+    });
+    const today = new Date().toISOString().split('T')[0];
+    ['att-date','tithe-date','notif-date'].forEach(i => { const el = document.getElementById(i); if(el) el.value = today; });
+    await loadAdminMembers();
+    await loadAdminAttendance();
+    await loadAdminTithes();
+    await loadAdminNotifs();
+    await loadAdminPrograms();
+    await loadYouthDashboard();
+    await populateSelects();
+  }
+  await loadOverview();
+  await loadAttendanceTab();
+  await loadTithesTab();
+  await loadNotificationsTab();
+  switchTab('tab-overview');
+}
+
+async function loadOverview() {
+  const uid = currentUser.uid;
+  const year = String(new Date().getFullYear());
+  const attSnap = await getDocs(query(collection(db,'attendance'), where('memberId','==',uid)));
+  const attDocs = attSnap.docs.map(d => d.data());
+  const present = attDocs.filter(a => a.status === 'Present').length;
+  const rate = attDocs.length ? Math.round((present/attDocs.length)*100) : 0;
+  document.getElementById('ov-attended').textContent = present;
+  document.getElementById('ov-rate').textContent = rate + '%';
+
+  const titheSnap = await getDocs(query(collection(db,'tithes'), where('memberId','==',uid)));
+  const titheDocs = titheSnap.docs.map(d => d.data());
+  const yearTotal = titheDocs.filter(t => t.date && t.date.startsWith(year)).reduce((s,t) => s+Number(t.amount),0);
+  const sorted = titheDocs.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  document.getElementById('ov-tithes').textContent = fmt(yearTotal);
+  document.getElementById('ov-last-giving').textContent = sorted[0] ? fmt(sorted[0].amount) : '—';
+
+  const notifSnap = await getDocs(query(collection(db,'notifications'), orderBy('date','desc')));
+  const notifs = notifSnap.docs.slice(0,3).map(d => d.data());
+  document.getElementById('notif-badge').textContent = notifSnap.docs.length;
+  document.getElementById('overview-notifs').innerHTML = notifs.map(n => `
+    <div class="notif-item"><div class="notif-dot"></div>
+    <div><div class="notif-text"><strong>${n.title}</strong> — ${(n.message||'').substring(0,80)}...</div>
+    <div class="notif-time">${n.category} · ${n.date}</div></div></div>`).join('') || '<p style="color:var(--muted)">No notifications yet</p>';
+}
+
+async function loadAttendanceTab() {
+  const snap = await getDocs(query(collection(db,'attendance'), where('memberId','==',currentUser.uid)));
+  const docs = snap.docs.map(d => ({id:d.id,...d.data()})).sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  document.getElementById('attendance-body').innerHTML = docs.length ? docs.map(a => `
+    <tr><td>${a.date}</td><td>${a.service}</td>
+    <td><span class="badge ${a.status==='Present'?'badge-green':a.status==='Absent'?'badge-red':'badge-gold'}">${a.status}</span></td>
+    <td>${a.notes||'—'}</td></tr>`).join('') : '<tr><td colspan="4" style="text-align:center;color:var(--muted)">No records yet</td></tr>';
+}
+
+async function loadTithesTab() {
+  const uid = currentUser.uid;
+  const snap = await getDocs(query(collection(db,'tithes'), where('memberId','==',uid)));
+  const docs = snap.docs.map(d => ({id:d.id,...d.data()})).sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  const now = new Date();
+  const monthStr = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const yearStr = String(now.getFullYear());
+  const mTotal = docs.filter(t=>t.date&&t.date.startsWith(monthStr)).reduce((s,t)=>s+Number(t.amount),0);
+  const yTotal = docs.filter(t=>t.date&&t.date.startsWith(yearStr)).reduce((s,t)=>s+Number(t.amount),0);
+  const total = docs.reduce((s,t)=>s+Number(t.amount),0);
+  document.getElementById('g-month').textContent = fmt(mTotal);
+  document.getElementById('g-year').textContent = fmt(yTotal);
+  document.getElementById('g-total').textContent = fmt(total);
+  document.getElementById('g-last').textContent = docs[0] ? docs[0].date : '—';
+  document.getElementById('tithes-body').innerHTML = docs.length ? docs.map(t => `
+    <tr><td>${t.date}</td><td><span class="badge badge-blue">${t.type}</span></td>
+    <td><strong>${fmt(t.amount)}</strong></td><td>${t.method}</td><td>${t.notes||'—'}</td></tr>`).join('') :
+    '<tr><td colspan="5" style="text-align:center;color:var(--muted)">No records yet</td></tr>';
+}
+
+async function loadNotificationsTab() {
+  const snap = await getDocs(query(collection(db,'notifications'), orderBy('date','desc')));
+  const catColors = {Announcement:'badge-blue',Event:'badge-green',Reminder:'badge-gold',Urgent:'badge-red','Prayer Request':'badge-gold'};
+  document.getElementById('notifs-list').innerHTML = snap.docs.map((d,i) => {
+    const n = d.data();
+    return `<div class="notif-item">
+      <div class="notif-dot ${i>0?'read':''}"></div>
+      <div style="flex:1">
+        <div class="notif-text"><strong>${n.title}</strong> <span class="badge ${catColors[n.category]||'badge-blue'}" style="margin-left:0.5rem">${n.category}</span></div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">${n.message}</div>
+        <div class="notif-time" style="margin-top:4px">${n.date}</div>
+      </div></div>`;
+  }).join('') || '<p style="color:var(--muted);text-align:center;padding:2rem">No notifications yet</p>';
+  document.getElementById('notif-badge').textContent = snap.docs.length;
+}
+
+// ===== ADMIN =====
+async function populateSelects() {
+  const snap = await getDocs(collection(db,'members'));
+  const opts = '<option value="">Select member...</option>' + snap.docs.map(d => `<option value="${d.id}">${d.data().name}</option>`).join('');
+  ['att-member','tithe-member'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = opts; });
+}
+
+async function addMember() {
+  const name = document.getElementById('new-name').value.trim();
+  const email = document.getElementById('new-email').value.trim();
+  const pass = document.getElementById('new-pass').value;
+  const phone = document.getElementById('new-phone').value.trim();
+  const dept = document.getElementById('new-dept').value;
+  const role = document.getElementById('new-role').value;
+  const joined = document.getElementById('new-joined').value || new Date().toISOString().split('T')[0];
+  if (!name||!email||!pass) { showMsg('member-add-error','Please fill in name, email and password.','error'); return; }
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pass);
+    await setDoc(doc(db,'members',cred.user.uid), {name,email,phone,dept,role,joined,status:'Active',createdAt:serverTimestamp()});
+    showMsg('member-add-success','Member added successfully!');
+    ['new-name','new-email','new-pass','new-phone'].forEach(id => document.getElementById(id).value='');
+    await loadAdminMembers();
+    await populateSelects();
+    // Re-sign in as admin since createUser changes auth
+    await signInWithEmailAndPassword(auth, currentProfile.email, '');
+  } catch(e) {
+    // createUserWithEmailAndPassword changes current session — we reload profile
+    const snap = await getDoc(doc(db,'members',currentUser.uid));
+    if(snap.exists()) currentProfile = snap.data();
+    if(e.code === 'auth/email-already-in-use') { showMsg('member-add-error','Email already in use.','error'); return; }
+    showMsg('member-add-success','Member added successfully!');
+    ['new-name','new-email','new-pass','new-phone'].forEach(id => document.getElementById(id).value='');
+    await loadAdminMembers();
+    await populateSelects();
+  }
+}
+window.addMember = addMember;
+
+async function loadAdminMembers() {
+  const snap = await getDocs(collection(db,'members'));
+  document.getElementById('members-body').innerHTML = snap.docs.map(d => {
+    const m = d.data(); const id = d.id;
+    return `<tr>
+      <td><strong>${m.name}</strong>${m.role==='admin'?'<span class="admin-tag" style="margin-left:6px">Admin</span>':''}</td>
+      <td>${m.email}</td><td>${m.phone||'—'}</td>
+      <td><span class="badge badge-blue">${m.dept||'General'}</span></td>
+      <td>${m.joined||'—'}</td>
+      <td>${id!==currentUser.uid?`<button class="del-btn" onclick="deleteMember('${id}')">Remove</button>`:'<span style="color:var(--muted);font-size:12px">You</span>'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--muted)">No members yet</td></tr>';
+}
+
+async function deleteMember(uid) {
+  if(!confirm('Remove this member and all their records?')) return;
+  await deleteDoc(doc(db,'members',uid));
+  const attSnap = await getDocs(query(collection(db,'attendance'),where('memberId','==',uid)));
+  for(const d of attSnap.docs) await deleteDoc(d.ref);
+  const titheSnap = await getDocs(query(collection(db,'tithes'),where('memberId','==',uid)));
+  for(const d of titheSnap.docs) await deleteDoc(d.ref);
+  await loadAdminMembers();
+  await populateSelects();
+}
+window.deleteMember = deleteMember;
+
+async function recordAttendance() {
+  const memberId = document.getElementById('att-member').value;
+  const date = document.getElementById('att-date').value;
+  const service = document.getElementById('att-service').value;
+  const status = document.getElementById('att-status').value;
+  const notes = document.getElementById('att-notes').value;
+  if(!memberId||!date) { alert('Please select a member and date.'); return; }
+  await addDoc(collection(db,'attendance'),{memberId,date,service,status,notes,createdAt:serverTimestamp()});
+  showMsg('att-success','Attendance recorded!');
+  document.getElementById('att-notes').value='';
+  await loadAdminAttendance();
+  if(memberId===currentUser.uid) { await loadAttendanceTab(); await loadOverview(); }
+}
+window.recordAttendance = recordAttendance;
+
+async function loadAdminAttendance() {
+  const snap = await getDocs(query(collection(db,'attendance'), orderBy('date','desc')));
+  const membersSnap = await getDocs(collection(db,'members'));
+  const memberMap = {};
+  membersSnap.docs.forEach(d => memberMap[d.id] = d.data().name);
+  document.getElementById('all-attendance-body').innerHTML = snap.docs.map(d => {
+    const a = d.data();
+    return `<tr>
+      <td>${memberMap[a.memberId]||'Unknown'}</td><td>${a.date}</td><td>${a.service}</td>
+      <td><span class="badge ${a.status==='Present'?'badge-green':a.status==='Absent'?'badge-red':'badge-gold'}">${a.status}</span></td>
+      <td>${a.notes||'—'}</td>
+      <td><button class="del-btn" onclick="deleteAttendance('${d.id}')">Delete</button></td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--muted)">No records</td></tr>';
+}
+
+async function deleteAttendance(id) {
+  if(!confirm('Delete this record?')) return;
+  await deleteDoc(doc(db,'attendance',id));
+  await loadAdminAttendance(); await loadAttendanceTab(); await loadOverview();
+}
+window.deleteAttendance = deleteAttendance;
+
+async function recordTithe() {
+  const memberId = document.getElementById('tithe-member').value;
+  const date = document.getElementById('tithe-date').value;
+  const type = document.getElementById('tithe-type').value;
+  const amount = parseFloat(document.getElementById('tithe-amount').value);
+  const method = document.getElementById('tithe-method').value;
+  const notes = document.getElementById('tithe-notes').value;
+  if(!memberId||!date||!amount||amount<=0) { alert('Please fill all required fields.'); return; }
+  await addDoc(collection(db,'tithes'),{memberId,date,type,amount,method,notes,createdAt:serverTimestamp()});
+  showMsg('tithe-success','Tithe recorded successfully!');
+  document.getElementById('tithe-amount').value='';
+  document.getElementById('tithe-notes').value='';
+  await loadAdminTithes();
+  if(memberId===currentUser.uid) { await loadTithesTab(); await loadOverview(); }
+}
+window.recordTithe = recordTithe;
+
+async function loadAdminTithes() {
+  const snap = await getDocs(query(collection(db,'tithes'), orderBy('date','desc')));
+  const membersSnap = await getDocs(collection(db,'members'));
+  const memberMap = {};
+  membersSnap.docs.forEach(d => memberMap[d.id] = d.data().name);
+  const docs = snap.docs.map(d => ({id:d.id,...d.data()}));
+  const now = new Date();
+  const monthStr = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const yearStr = String(now.getFullYear());
+  document.getElementById('admin-g-month').textContent = fmt(docs.filter(t=>t.date&&t.date.startsWith(monthStr)).reduce((s,t)=>s+Number(t.amount),0));
+  document.getElementById('admin-g-year').textContent = fmt(docs.filter(t=>t.date&&t.date.startsWith(yearStr)).reduce((s,t)=>s+Number(t.amount),0));
+  document.getElementById('admin-g-all').textContent = fmt(docs.reduce((s,t)=>s+Number(t.amount),0));
+  document.getElementById('all-tithes-body').innerHTML = docs.map(t => `
+    <tr><td>${memberMap[t.memberId]||'Unknown'}</td><td>${t.date}</td>
+    <td><span class="badge badge-blue">${t.type}</span></td>
+    <td><strong>${fmt(t.amount)}</strong></td><td>${t.method}</td><td>${t.notes||'—'}</td>
+    <td><button class="del-btn" onclick="deleteTithe('${t.id}')">Delete</button></td>
+    </tr>`).join('') || '<tr><td colspan="7" style="text-align:center;color:var(--muted)">No records</td></tr>';
+}
+
+async function deleteTithe(id) {
+  if(!confirm('Delete this record?')) return;
+  await deleteDoc(doc(db,'tithes',id));
+  await loadAdminTithes(); await loadTithesTab(); await loadOverview();
+}
+window.deleteTithe = deleteTithe;
+
+async function sendNotification() {
+  const title = document.getElementById('notif-title').value.trim();
+  const message = document.getElementById('notif-msg').value.trim();
+  const category = document.getElementById('notif-cat').value;
+  const date = document.getElementById('notif-date').value;
+  if(!title||!message) { alert('Please fill title and message.'); return; }
+  await addDoc(collection(db,'notifications'),{title,message,category,date,createdAt:serverTimestamp()});
+  showMsg('notif-success','Notification sent to all members!');
+  document.getElementById('notif-title').value='';
+  document.getElementById('notif-msg').value='';
+  await loadAdminNotifs();
+  await loadNotificationsTab();
+  await loadOverview();
+}
+window.sendNotification = sendNotification;
+
+async function loadAdminNotifs() {
+  const snap = await getDocs(query(collection(db,'notifications'), orderBy('date','desc')));
+  const catColors = {Announcement:'badge-blue',Event:'badge-green',Reminder:'badge-gold',Urgent:'badge-red','Prayer Request':'badge-gold'};
+  document.getElementById('admin-notifs-list').innerHTML = snap.docs.map(d => {
+    const n = d.data();
+    return `<div class="notif-item"><div class="notif-dot"></div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
+          <strong>${n.title}</strong>
+          <div><span class="badge ${catColors[n.category]||'badge-blue'}">${n.category}</span>
+          <button class="del-btn" style="margin-left:0.5rem" onclick="deleteNotif('${d.id}')">Delete</button></div>
+        </div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">${n.message}</div>
+        <div class="notif-time" style="margin-top:4px">${n.date}</div>
+      </div></div>`;
+  }).join('') || '<p style="color:var(--muted);text-align:center;padding:2rem">No notifications yet</p>';
+}
+
+async function deleteNotif(id) {
+  if(!confirm('Delete this notification?')) return;
+  await deleteDoc(doc(db,'notifications',id));
+  await loadAdminNotifs(); await loadNotificationsTab(); await loadOverview();
+}
+window.deleteNotif = deleteNotif;
+
+// Enter key login
+document.addEventListener('keydown', e => {
+  if(e.key==='Enter' && document.getElementById('login-page').classList.contains('active')) doLogin();
+});
+
+// ===== PROGRAMS =====
+async function saveProgram() {
+  const name = document.getElementById('prog-name').value.trim();
+  const date = document.getElementById('prog-date').value;
+  const time = document.getElementById('prog-time').value.trim();
+  const venue = document.getElementById('prog-venue').value.trim();
+  const desc = document.getElementById('prog-desc').value.trim();
+  if(!name||!date) { alert('Please fill in program name and date.'); return; }
+  await addDoc(collection(db,'programs'),{name,date,time,venue,desc,createdAt:serverTimestamp()});
+  showMsg('prog-success','Program saved!');
+  ['prog-name','prog-time','prog-venue','prog-desc'].forEach(id => document.getElementById(id).value='');
+  await loadAdminPrograms();
+}
+window.saveProgram = saveProgram;
+
+async function loadAdminPrograms() {
+  const snap = await getDocs(query(collection(db,'programs'), orderBy('date','desc')));
+  const body = document.getElementById('programs-body');
+  if(!body) return;
+  body.innerHTML = snap.docs.map(d => {
+    const p = d.data();
+    return `<tr>
+      <td><strong>${p.name}</strong></td>
+      <td>${p.date}</td><td>${p.time||'—'}</td><td>${p.venue||'—'}</td>
+      <td>${p.desc||'—'}</td>
+      <td><button class="del-btn" onclick="deleteProgram('${d.id}')">Delete</button></td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--muted)">No programs yet</td></tr>';
+}
+
+async function deleteProgram(id) {
+  if(!confirm('Delete this program?')) return;
+  await deleteDoc(doc(db,'programs',id));
+  await loadAdminPrograms();
+}
+window.deleteProgram = deleteProgram;
+
+// ===== YOUTH =====
+async function populateYouthSelect() {
+  const snap = await getDocs(query(collection(db,'members'), where('dept','==','Youth')));
+  const el = document.getElementById('youth-att-member');
+  if(!el) return;
+  el.innerHTML = '<option value="">Select youth member...</option>' + snap.docs.map(d => `<option value="${d.id}">${d.data().name}</option>`).join('');
+}
+
+async function recordYouthAttendance() {
+  const memberId = document.getElementById('youth-att-member').value;
+  const date = document.getElementById('youth-att-date').value;
+  const service = document.getElementById('youth-att-service').value;
+  const status = document.getElementById('youth-att-status').value;
+  const notes = document.getElementById('youth-att-notes').value;
+  if(!memberId||!date) { alert('Please select a youth member and date.'); return; }
+  await addDoc(collection(db,'attendance'),{memberId,date,service,status,notes,isYouth:true,createdAt:serverTimestamp()});
+  showMsg('youth-att-success','Attendance recorded!');
+  document.getElementById('youth-att-notes').value='';
+  await loadYouthDashboard();
+}
+window.recordYouthAttendance = recordYouthAttendance;
+
+async function loadYouthDashboard() {
+  const membersSnap = await getDocs(query(collection(db,'members'), where('dept','==','Youth')));
+  const youthMembers = membersSnap.docs.map(d => ({id:d.id,...d.data()}));
+  await populateYouthSelect();
+
+  const now = new Date();
+  const monthStr = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  const yearStr = String(now.getFullYear());
+
+  let monthTotal = 0, yearTotal = 0, allTotal = 0;
+  const rows = [];
+
+  for(const member of youthMembers) {
+    const attSnap = await getDocs(query(collection(db,'attendance'), where('memberId','==',member.id)));
+    const attDocs = attSnap.docs.map(d => d.data());
+    const present = attDocs.filter(a => a.status==='Present').length;
+    const rate = attDocs.length ? Math.round((present/attDocs.length)*100) : 0;
+    const lastAtt = attDocs.sort((a,b)=>(b.date||'').localeCompare(a.date||''))[0];
+
+    const titheSnap = await getDocs(query(collection(db,'tithes'), where('memberId','==',member.id)));
+    const titheDocs = titheSnap.docs.map(d => d.data());
+    const mTotal = titheDocs.filter(t=>t.date&&t.date.startsWith(monthStr)).reduce((s,t)=>s+Number(t.amount),0);
+    const yTotal = titheDocs.filter(t=>t.date&&t.date.startsWith(yearStr)).reduce((s,t)=>s+Number(t.amount),0);
+    const total = titheDocs.reduce((s,t)=>s+Number(t.amount),0);
+    monthTotal += mTotal; yearTotal += yTotal; allTotal += total;
+
+    rows.push(`<tr>
+      <td><strong>${member.name}</strong></td>
+      <td>${present} / ${attDocs.length}</td>
+      <td><span class="badge ${rate>=75?'badge-green':rate>=50?'badge-gold':'badge-red'}">${rate}%</span></td>
+      <td><strong>${fmt(total)}</strong></td>
+      <td>${lastAtt ? lastAtt.date : '—'}</td>
+    </tr>`);
+  }
+
+  const mb = document.getElementById('youth-month'); if(mb) mb.textContent = fmt(monthTotal);
+  const yb = document.getElementById('youth-year'); if(yb) yb.textContent = fmt(yearTotal);
+  const ab = document.getElementById('youth-all'); if(ab) ab.textContent = fmt(allTotal);
+  const pb = document.getElementById('youth-progress-body');
+  if(pb) pb.innerHTML = rows.join('') || '<tr><td colspan="5" style="text-align:center;color:var(--muted)">No youth members found. Add members wit

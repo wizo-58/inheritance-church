@@ -971,4 +971,10 @@ async function loadYouthDashboard() {
   const yb = document.getElementById('youth-year'); if(yb) yb.textContent = fmt(yearTotal);
   const ab = document.getElementById('youth-all'); if(ab) ab.textContent = fmt(allTotal);
   const pb = document.getElementById('youth-progress-body');
-  if(pb) pb.innerHTML = rows.join('') || '<tr><td colspan="5" style="text-align:center;color:var(--muted)">No youth members found. Add members wit
+  if(pb) pb.innerHTML = rows.join('') || '<tr><td colspan="5" style="text-align:center;color:var(--muted)">No youth members found. Add members with the Add Member button.</td></tr>';
+}
+
+window.loadYouthDashboard = loadYouthDashboard;
+</script>
+</body>
+</html>
